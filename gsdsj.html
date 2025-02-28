@@ -147,20 +147,20 @@
     <script>
         // 添加随机背景切换功能
         const backgrounds = [
-            '<img src="D:\VS代码\WebApplication1\WebApplication1\兰1.jpg" />',
-            '<img src="D:\VS代码\WebApplication1\WebApplication1\兰2.jpg" />',
-            '<img src="D:\VS代码\WebApplication1\WebApplication1\兰3.jpg" />'
+            '兰1.jpg',
+            '兰2.jpg',
+            '兰3.jpg'
         ];
 
         // 每小时切换背景
         setInterval(() => {
             document.body.style.backgroundImage =
                 `url('${backgrounds[Math.floor(Math.random()*backgrounds.length)]}')`;
-        }, 3600000);
+        }, 5000);
 
         // 添加头像点击互动
         document.querySelector('.avatar').addEventListener('click', () => {
-            const texts = ["发现惊喜了吗？", "想聊聊什么呢？", "点击这里开始吧！"];
+            const texts = ["发现惊喜了吗？", "想聊聊什么呢？", "点击这里开始吧！","你知道吗？其实......"];
             const bubble = document.createElement('div');
             bubble.style.cssText = `
                 position: absolute;
