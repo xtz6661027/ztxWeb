@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到我的世界</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            /* 背景图片设置 */
+            background-image: url('兰2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 浮动头像样式 */
+        .avatar {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            background-image: url('兰4.jpg');
+            background-size: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 文字容器 */
+        .welcome-text {
+            position: absolute;
+            top: 40%;
+            left: 20%;
+            color: rgba(255,255,255,0.9);
+            font-family: '楷体', cursive;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* 逐字动画 */
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(10) forwards;
+        }
+
+        /* 抖动效果 */
+        .jitter {
+            display: inline-block;
+            animation: jitter 0.2s linear infinite;
+        }
+
+        /* 动画定义 */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes jitter {
+            0% {
+                transform: translateX(-2px);
+            }
+
+            25% {
+                transform: translateX(2px);
+            }
+
+            50% {
+                transform: translateY(-2px);
+            }
+
+            75% {
+                transform: translateY(2px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .avatar {
+                width: 100px;
+                height: 100px;
+                right: 5%;
+            }
+
+            .welcome-text {
+                font-size: 1.8em;
+                left: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="avatar"></div>
+        <div class="welcome-text">
+            <span class="typing">
+                <span class="jitter">欢</span>
+                <span class="jitter" style="animation-delay: 0.1s">迎</span>
+                <span class="jitter" style="animation-delay: 0.2s">来</span>
+                <span class="jitter" style="animation-delay: 0.3s">到</span>
+                <span class="jitter" style="animation-delay: 0.4s">我</span>
+                <span class="jitter" style="animation-delay: 0.5s">的</span>
+                <span class="jitter" style="animation-delay: 0.6s">世</span>
+                <span class="jitter" style="animation-delay: 0.7s">界</span>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        // 添加随机背景切换功能
+        const backgrounds = [
+            '<img src="D:\VS代码\WebApplication1\WebApplication1\兰1.jpg" />',
+            '<img src="D:\VS代码\WebApplication1\WebApplication1\兰2.jpg" />',
+            '<img src="D:\VS代码\WebApplication1\WebApplication1\兰3.jpg" />'
+        ];
+
+        // 每小时切换背景
+        setInterval(() => {
+            document.body.style.backgroundImage =
+                `url('${backgrounds[Math.floor(Math.random()*backgrounds.length)]}')`;
+        }, 3600000);
+
+        // 添加头像点击互动
+        document.querySelector('.avatar').addEventListener('click', () => {
+            const texts = ["发现惊喜了吗？", "想聊聊什么呢？", "点击这里开始吧！"];
+            const bubble = document.createElement('div');
+            bubble.style.cssText = `
+                position: absolute;
+                top: ${Math.random()*80}%;
+                left: ${Math.random()*80}%;
+                padding: 10px 20px;
+                background: rgba(255,255,255,0.9);
+                border-radius: 15px;
+                color: #333;
+                font-family: 楷体;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: float 2s ease-in-out;
+            `;
+            bubble.textContent = texts[Math.floor(Math.random()*texts.length)];
+            document.body.appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
